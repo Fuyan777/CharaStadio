@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="CharaCollectionViewCell" customModule="CharaStadio" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="346" height="116"/>
+            <autoresizingMask key="autoresizingMask"/>
+            <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                <rect key="frame" x="0.0" y="0.0" width="346" height="116"/>
+                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6T9-mO-NUW">
+                        <rect key="frame" x="0.0" y="0.0" width="346" height="116"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="RfJ-iu-LEj">
+                                <rect key="frame" x="16" y="16" width="314" height="84"/>
+                                <subviews>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w88-pL-K5t">
+                                        <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="84" id="aqc-Vp-B6F"/>
+                                            <constraint firstAttribute="height" constant="84" id="b2b-ag-fSY"/>
+                                        </constraints>
+                                    </imageView>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="キャラ名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cz-3y-xVU">
+                                        <rect key="frame" x="108" y="0.0" width="206" height="84"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="XLj-V2-xM7"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="opaqueSeparatorColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="RfJ-iu-LEj" secondAttribute="trailing" constant="16" id="byY-tR-HrB"/>
+                            <constraint firstAttribute="bottom" secondItem="RfJ-iu-LEj" secondAttribute="bottom" constant="16" id="jsO-El-Iu4"/>
+                            <constraint firstItem="RfJ-iu-LEj" firstAttribute="leading" secondItem="6T9-mO-NUW" secondAttribute="leading" constant="16" id="qwS-Rg-HT2"/>
+                            <constraint firstItem="RfJ-iu-LEj" firstAttribute="top" secondItem="6T9-mO-NUW" secondAttribute="top" constant="16" id="rAM-gD-Kxi"/>
+                        </constraints>
+                    </view>
+                </subviews>
+            </view>
+            <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
+            <constraints>
+                <constraint firstItem="6T9-mO-NUW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7IU-JU-MOF"/>
+                <constraint firstAttribute="bottom" secondItem="6T9-mO-NUW" secondAttribute="bottom" id="Fx0-ns-q02"/>
+                <constraint firstItem="6T9-mO-NUW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xdf-aJ-KNa"/>
+                <constraint firstAttribute="trailing" secondItem="6T9-mO-NUW" secondAttribute="trailing" id="igp-cw-1Am"/>
+            </constraints>
+            <size key="customSize" width="346" height="74"/>
+            <connections>
+                <outlet property="baseView" destination="6T9-mO-NUW" id="y11-EV-aRB"/>
+                <outlet property="charaImageView" destination="w88-pL-K5t" id="5A9-Bm-t0D"/>
+                <outlet property="charaNameLabel" destination="1cz-3y-xVU" id="dFb-W9-uVn"/>
+            </connections>
+            <point key="canvasLocation" x="137.68115942028987" y="65.625"/>
+        </collectionViewCell>
+    </objects>
+    <resources>
+        <systemColor name="opaqueSeparatorColor">
+            <color red="0.77647058823529413" green="0.77647058823529413" blue="0.78431372549019607" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>

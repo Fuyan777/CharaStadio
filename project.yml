@@ -1,0 +1,16 @@
+name: CharaStadio
+fileGroups:
+  - configs
+configFiles:
+  Debug: configs/Debug.xcconfig
+  Release: configs/Release.xcconfig
+targets:
+  CharaStadio:
+    type: application
+    platform: iOS
+    sources: CharaStadio
+    configFiles:
+      Debug: configs/CharaStadio-Debug.xcconfig
+      Release: configs/CharaStadio-Release.xcconfig
+    settings:
+      CURRENT_PROJECT_VERSION: 1
