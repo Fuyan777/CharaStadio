@@ -3,6 +3,7 @@
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
+        <capability name="Image references" minToolsVersion="12.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -47,9 +48,20 @@
                             <constraint firstItem="CrL-sQ-NhF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mGz-eg-AaA"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" id="lxM-Rf-IRV"/>
+                    <navigationItem key="navigationItem" id="lxM-Rf-IRV">
+                        <barButtonItem key="rightBarButtonItem" style="plain" id="0gX-t3-Ks9">
+                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hdM-vY-1Oj">
+                                <rect key="frame" x="319" y="9.5" width="75" height="25"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal">
+                                    <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
+                                </state>
+                            </button>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="charaCollectionView" destination="CrL-sQ-NhF" id="czX-fl-nJc"/>
+                        <outlet property="settingButton" destination="hdM-vY-1Oj" id="K64-Fa-Pjf"/>
                         <segue destination="H4l-i1-VcN" kind="show" identifier="detail" id="gjA-Pw-U61"/>
                     </connections>
                 </viewController>
@@ -65,7 +77,7 @@
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="AVi-ht-8MJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1614" y="14"/>
+            <point key="canvasLocation" x="1588" y="115"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="E9K-8E-iC8">
@@ -87,6 +99,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="gearshape" catalog="system" width="128" height="121"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

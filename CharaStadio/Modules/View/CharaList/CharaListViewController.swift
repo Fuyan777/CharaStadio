@@ -17,6 +17,10 @@ class CharaListViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var settingButton: UIButton! {
+        didSet { settingButton.addTarget(self, action: #selector(moveSetting), for: .touchUpInside) }
+    }
+    
     private let model: FirebaseModelProtocol = FirebaseModel()
     private var entity = [CharaEntity]()
     
@@ -39,6 +43,12 @@ class CharaListViewController: UIViewController {
                 print(error)
             }
         }
+    }
+    
+    @objc func moveSetting() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "Setting", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "setting") as! SettingViewController
+        self.navigationController?.pushViewController(nextView, animated: true)
     }
 }
 
