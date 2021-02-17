@@ -31,8 +31,11 @@ class CharaDetailViewController: UIViewController {
     }
     
     @objc func shareSns() {
-        let items = ["text"]
-        let activityVC = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        guard let image = charaImageView.image else { return }
+        
+        let text = "#charasta"
+        let items: [Any?] = [image, charaDetail.name, text]
+        let activityVC = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
     }
     
