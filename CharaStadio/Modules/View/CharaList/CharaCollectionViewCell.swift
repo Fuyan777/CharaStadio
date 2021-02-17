@@ -38,6 +38,6 @@ class CharaCollectionViewCell: UICollectionViewCell {
     func getImage(imageRef: String, imageView: UIImageView) {
         let storageRef = Storage.storage().reference(forURL: "gs://charastadio-8cd04.appspot.com/")
         let ref = storageRef.child("\(imageRef).png")
-        imageView.sd_setImage(with: ref, placeholderImage: UIImage(systemName: "star"))
+        imageView.sd_setImage(with: ref, placeholderImage: UIImage(named: "noImage"))
     }
 }

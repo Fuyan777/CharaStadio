@@ -15,7 +15,6 @@ class CharaDetailViewController: UIViewController {
     }
     
     @IBOutlet weak var charaImageView: UIImageView!
-    
     @IBOutlet weak var charaDescriptionLabel: UILabel!
     
     var charaDetail: CharaEntity!
