@@ -4,7 +4,9 @@ platform :ios, '12.0'
 target 'CharaStadio' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
-
+  pod 'Firebase/Storage'
+  pod 'FirebaseUI/Storage'
+  pod 'Firebase/Firestore'
   # Pods for CharaStadio
 
 end

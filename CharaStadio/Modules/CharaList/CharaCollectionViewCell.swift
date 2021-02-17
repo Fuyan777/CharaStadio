@@ -6,6 +6,8 @@
 //
 
 import UIKit
+import Firebase
+import FirebaseUI
 
 class CharaCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var baseView: UIView! {
@@ -15,16 +17,14 @@ class CharaCollectionViewCell: UICollectionViewCell {
         }
     }
     
-    @IBOutlet weak var charaImageView: UIImageView! {
-        didSet { charaImageView.image = UIImage(systemName: "star") }
-    }
+    @IBOutlet weak var charaImageView: UIImageView!
     
     @IBOutlet weak var charaNameLabel: UILabel! {
-        didSet { charaNameLabel.text = "ギャング" }
+        didSet { charaNameLabel.text = "" }
     }
     
     struct Component {
-        var charaInfo: CharaEntiry
+        var charaInfo: CharaEntity
     }
     
     private var component: Component?
@@ -32,5 +32,12 @@ class CharaCollectionViewCell: UICollectionViewCell {
     func setupCell(component: Component) {
         self.component = component
         charaNameLabel.text = component.charaInfo.name
+        getImage(imageRef: component.charaInfo.imageRef, imageView: charaImageView)
+    }
+    
+    func getImage(imageRef: String, imageView: UIImageView) {
+        let storageRef = Storage.storage().reference(forURL: "gs://charastadio-8cd04.appspot.com/")
+        let ref = storageRef.child("\(imageRef).png")
+        imageView.sd_setImage(with: ref, placeholderImage: UIImage(systemName: "star"))
     }
 }
