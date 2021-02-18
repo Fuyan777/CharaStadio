@@ -1,4 +1,10 @@
 name: CharaStadio
+options:
+  bundleIdPrefix: fuya.CharaStadio
+  deploymentTarget:
+    iOS: 13.0
+  developmentLanguage: ja
+  xcodeVersion: "12.3"
 fileGroups:
   - configs
 configFiles:
@@ -14,3 +20,5 @@ targets:
       Release: configs/CharaStadio-Release.xcconfig
     settings:
       CURRENT_PROJECT_VERSION: 1
+      MARKETING_VERSION: 1.0.0
+      TARGETED_DEVICE_FAMILY: 1
