@@ -8,7 +8,10 @@
 import UIKit
 
 class SettingTableViewCell: UITableViewCell {
-    @IBOutlet weak var baseView: UIView!
+    @IBOutlet weak var baseView: UIView! {
+        didSet { baseView.backgroundColor = Asset.cellBgColor.color }
+    }
+    
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var iconImageView: UIImageView!
     

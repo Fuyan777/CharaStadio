@@ -14,7 +14,7 @@ class SettingViewController: UIViewController {
             settingTableView.delegate = self
             settingTableView.dataSource = self
             settingTableView.registerNib(cellType: SettingTableViewCell.self)
-            settingTableView.backgroundColor = .lightGray
+            settingTableView.backgroundColor = Asset.viewBgColor.color
             settingTableView.tableFooterView = UIView()
         }
     }
@@ -60,13 +60,13 @@ extension SettingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerViewFrame = CGRect(origin: .zero, size: CGSize(width: tableView.bounds.width, height: 48))
         let tableViewHeaderView = UIView(frame: headerViewFrame)
-        tableViewHeaderView.backgroundColor = .gray
+        tableViewHeaderView.backgroundColor = Asset.viewBgColor.color
         
         let headerLabelFrame = CGRect(origin: .zero, size: CGSize(width: 200, height: 20))
         let headerLabel = UILabel(frame: headerLabelFrame)
         headerLabel.center = CGPoint(x: 116, y: tableViewHeaderView.center.y)
         headerLabel.text = model.tableSection[section].title
-        headerLabel.textColor = .black
+        headerLabel.textColor = Asset.textColor.color
         headerLabel.font = UIFont.boldSystemFont(ofSize: 17)
         
         tableViewHeaderView.addSubview(headerLabel)

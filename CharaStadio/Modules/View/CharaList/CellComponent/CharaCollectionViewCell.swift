@@ -12,16 +12,13 @@ import FirebaseUI
 class CharaCollectionViewCell: UICollectionViewCell {
     @IBOutlet weak var baseView: UIView! {
         didSet {
-            baseView.backgroundColor = .white
+            baseView.backgroundColor = Asset.cellBgColor.color
             baseView.defaultMaskCorner()
         }
     }
     
     @IBOutlet weak var charaImageView: UIImageView!
-    
-    @IBOutlet weak var charaNameLabel: UILabel! {
-        didSet { charaNameLabel.text = "" }
-    }
+    @IBOutlet weak var charaNameLabel: UILabel!
     
     struct Component {
         var charaInfo: CharaEntity

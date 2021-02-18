@@ -22,10 +22,16 @@ class CharaDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupChara()
+        view.backgroundColor = Asset.viewBgColor.color
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = charaDetail.name
+        navigationController?.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.white ]
     }
     
     private func setupChara() {
-        navigationItem.title = charaDetail.name
         charaDescriptionLabel.text = charaDetail.description
         getImage(imageRef: charaDetail.imageRef, imageView: charaImageView)
     }

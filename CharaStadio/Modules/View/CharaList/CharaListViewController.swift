@@ -13,7 +13,7 @@ class CharaListViewController: UIViewController {
             charaCollectionView.dataSource = self
             charaCollectionView.delegate = self
             charaCollectionView.registerNib(cellType: CharaCollectionViewCell.self)
-            charaCollectionView.backgroundColor = .lightGray
+            charaCollectionView.backgroundColor = Asset.viewBgColor.color
         }
     }
     
@@ -31,6 +31,8 @@ class CharaListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        navigationController?.navigationBar.barTintColor = Asset.accentColor.color
+        navigationController?.navigationBar.tintColor = .white
     }
     
     private func fetchData() {
