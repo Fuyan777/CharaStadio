@@ -83,11 +83,14 @@ extension SettingViewController: UITableViewDelegate {
             let appRow = settingType.appRows[indexPath.row]
             switch appRow {
             case .request:
-                print("request")
+                presentSFSafariVC(urlString: "https://forms.gle/kp5oK4skkbJUpsGs7")
             case .appShare:
-                print("appShare")
+                let text = "#charasta"
+                let items: [Any?] = [text]
+                let activityVC = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
+                self.present(activityVC, animated: true, completion: nil)
             case .appReview:
-                print("appReview")
+                presentSFSafariVC(urlString: "https://forms.gle/EYnYHzxpiaDamJUi8")
             }
         case .other:
             let ohterRow = settingType.otherRows[indexPath.row]
