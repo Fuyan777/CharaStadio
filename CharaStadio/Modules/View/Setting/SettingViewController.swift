@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class SettingViewController: UIViewController {
     @IBOutlet weak var settingTableView: UITableView! {
@@ -22,6 +23,13 @@ class SettingViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    }
+    
+    func presentSFSafariVC(urlString: String) {
+        guard let url = URL(string: urlString) else { return }
+        
+        let vc = SFSafariViewController(url: url)
+        present(vc, animated: true, completion: nil)
     }
 }
 
@@ -85,7 +93,7 @@ extension SettingViewController: UITableViewDelegate {
             let ohterRow = settingType.otherRows[indexPath.row]
             switch ohterRow {
             case .privacyPolicy:
-                print("privacyPolicy")
+                presentSFSafariVC(urlString: "https://fuyan777.github.io/PrivacyPolicy/")
             case .version: break
             }
         }
