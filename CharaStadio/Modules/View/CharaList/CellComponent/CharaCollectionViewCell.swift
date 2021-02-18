@@ -14,6 +14,7 @@ class CharaCollectionViewCell: UICollectionViewCell {
         didSet {
             baseView.backgroundColor = Asset.cellBgColor.color
             baseView.defaultMaskCorner()
+            baseView.setupShadow()
         }
     }
     

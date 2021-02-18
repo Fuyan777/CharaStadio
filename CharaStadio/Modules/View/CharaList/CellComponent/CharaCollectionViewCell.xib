@@ -19,20 +19,20 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6T9-mO-NUW">
-                        <rect key="frame" x="0.0" y="0.0" width="346" height="116"/>
+                        <rect key="frame" x="8" y="8" width="330" height="100"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="24" translatesAutoresizingMaskIntoConstraints="NO" id="RfJ-iu-LEj">
-                                <rect key="frame" x="16" y="16" width="314" height="84"/>
+                                <rect key="frame" x="16" y="16" width="298" height="68"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="w88-pL-K5t">
-                                        <rect key="frame" x="0.0" y="0.0" width="84" height="84"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="68" height="68"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="84" id="aqc-Vp-B6F"/>
-                                            <constraint firstAttribute="height" constant="84" id="b2b-ag-fSY"/>
+                                            <constraint firstAttribute="height" constant="68" id="QOY-wp-fA7"/>
+                                            <constraint firstAttribute="width" secondItem="w88-pL-K5t" secondAttribute="height" multiplier="1:1" id="ebC-Ou-2kZ"/>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="キャラ名" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1cz-3y-xVU">
-                                        <rect key="frame" x="108" y="0.0" width="206" height="84"/>
+                                        <rect key="frame" x="92" y="0.0" width="206" height="68"/>
                                         <constraints>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="180" id="XLj-V2-xM7"/>
                                         </constraints>
@@ -55,10 +55,10 @@
             </view>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
             <constraints>
-                <constraint firstItem="6T9-mO-NUW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="7IU-JU-MOF"/>
-                <constraint firstAttribute="bottom" secondItem="6T9-mO-NUW" secondAttribute="bottom" id="Fx0-ns-q02"/>
-                <constraint firstItem="6T9-mO-NUW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="Xdf-aJ-KNa"/>
-                <constraint firstAttribute="trailing" secondItem="6T9-mO-NUW" secondAttribute="trailing" id="igp-cw-1Am"/>
+                <constraint firstItem="6T9-mO-NUW" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="8" id="7IU-JU-MOF"/>
+                <constraint firstAttribute="bottom" secondItem="6T9-mO-NUW" secondAttribute="bottom" constant="8" id="Fx0-ns-q02"/>
+                <constraint firstItem="6T9-mO-NUW" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="8" id="Xdf-aJ-KNa"/>
+                <constraint firstAttribute="trailing" secondItem="6T9-mO-NUW" secondAttribute="trailing" constant="8" id="igp-cw-1Am"/>
             </constraints>
             <size key="customSize" width="346" height="74"/>
             <connections>
