@@ -85,7 +85,7 @@ extension SettingViewController: UITableViewDelegate {
             case .request:
                 presentSFSafariVC(urlString: "https://forms.gle/kp5oK4skkbJUpsGs7")
             case .appShare:
-                let text = "#charasta"
+                let text = L10n.hashtag
                 let items: [Any?] = [text]
                 let activityVC = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
                 self.present(activityVC, animated: true, completion: nil)

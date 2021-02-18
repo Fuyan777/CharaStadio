@@ -33,7 +33,7 @@ class CharaDetailViewController: UIViewController {
     @objc func shareSns() {
         guard let image = charaImageView.image else { return }
         
-        let text = "#charasta"
+        let text = L10n.hashtag
         let items: [Any?] = [image, charaDetail.name, text]
         let activityVC = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
@@ -42,6 +42,6 @@ class CharaDetailViewController: UIViewController {
     func getImage(imageRef: String, imageView: UIImageView) {
         let storageRef = Storage.storage().reference(forURL: "gs://charastadio-8cd04.appspot.com/")
         let ref = storageRef.child("\(imageRef).png")
-        imageView.sd_setImage(with: ref, placeholderImage: UIImage(named: "noImage"))
+        imageView.sd_setImage(with: ref, placeholderImage: Asset.noImage.image)
     }
 }
