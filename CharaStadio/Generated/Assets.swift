@@ -26,6 +26,7 @@ internal enum Asset {
   internal static let textColor = ColorAsset(name: "TextColor")
   internal static let viewBgColor = ColorAsset(name: "ViewBgColor")
   internal static let noImage = ImageAsset(name: "noImage")
+  internal static let yanartLogo = ImageAsset(name: "yanart-logo")
 }
 // swiftlint:enable identifier_name line_length nesting type_body_length type_name
 
