@@ -21,7 +21,7 @@ class CharaListViewController: UIViewController {
         didSet { settingButton.addTarget(self, action: #selector(moveSetting), for: .touchUpInside) }
     }
     
-    private let model: FirebaseModelProtocol = FirebaseModel()
+    private let model: FirebaseRepositoryProtocol = FirebaseRepository()
     private var entity = [CharaEntity]()
     
     override func viewDidLoad() {

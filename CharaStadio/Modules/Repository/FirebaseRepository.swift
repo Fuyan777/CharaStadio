@@ -1,5 +1,5 @@
 //
-//  FirebaseModel.swift
+//  FirebaseRepository.swift
 //  CharaStadio
 //
 //  Created by 山田楓也 on 2021/02/16.
@@ -8,11 +8,11 @@
 import Firebase
 import FirebaseUI
 
-protocol FirebaseModelProtocol {
+protocol FirebaseRepositoryProtocol {
     func getChara(_ completion: @escaping (Result<[CharaEntity], Error>) -> Void)
 }
 
-class FirebaseModel: FirebaseModelProtocol {
+class FirebaseRepository: FirebaseRepositoryProtocol {
     let charaRef = Firestore.firestore().collection("Chara")
     func getChara(_ completion: @escaping (Result<[CharaEntity], Error>) -> Void) {
         charaRef.getDocuments { querySnapshot, error in
