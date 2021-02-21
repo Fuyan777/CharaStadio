@@ -73,7 +73,7 @@
                             </view>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="ViewBgColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CrL-sQ-NhF" secondAttribute="bottom" id="D7C-Ig-fov"/>
                             <constraint firstItem="CrL-sQ-NhF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Mxh-yR-6aa"/>
@@ -140,6 +140,9 @@
         <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
         <namedColor name="AccentColor">
             <color red="0.8666666666666667" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="ViewBgColor">
+            <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
