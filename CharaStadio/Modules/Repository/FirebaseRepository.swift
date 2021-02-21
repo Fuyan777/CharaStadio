@@ -5,7 +5,7 @@
 //  Created by 山田楓也 on 2021/02/16.
 //
 
-import Firebase
+import FirebaseFirestore
 import FirebaseUI
 
 protocol FirebaseRepositoryProtocol {

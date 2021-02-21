@@ -21,6 +21,20 @@ class CharaListViewController: UIViewController {
         didSet { settingButton.addTarget(self, action: #selector(moveSetting), for: .touchUpInside) }
     }
     
+    @IBOutlet weak var visualButtonBaseView: UIView! {
+        didSet {
+            visualButtonBaseView.allMaskCorner()
+            visualButtonBaseView.backgroundColor = Asset.accentColor.color
+        }
+    }
+    
+    @IBOutlet weak var iconVisualButton: UIButton! {
+        didSet {
+            iconVisualButton.backgroundColor = .clear
+            iconVisualButton.addTarget(self, action: #selector(moveIconVisual), for: .touchUpInside)
+        }
+    }
+    
     private let model: CharaListModelProtocol = CharaListModel()
     
     override func viewDidLoad() {
@@ -50,6 +64,12 @@ class CharaListViewController: UIViewController {
     @objc func moveSetting() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Setting", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "setting") as! SettingViewController
+        self.navigationController?.pushViewController(nextView, animated: true)
+    }
+    
+    @objc func moveIconVisual() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "IconVisual", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "iconVisual") as! IconVisualViewController
         self.navigationController?.pushViewController(nextView, animated: true)
     }
 }

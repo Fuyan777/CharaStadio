@@ -13,6 +13,11 @@ extension UIView {
         layer.masksToBounds = true
     }
     
+    func allMaskCorner() {
+        layer.cornerRadius = frame.height / 2
+        layer.masksToBounds = true
+    }
+    
     // 影をつける
     func setupShadow(opacity: Float = 0.1, radius: CGFloat = 2.0) {
         layer.masksToBounds = false
