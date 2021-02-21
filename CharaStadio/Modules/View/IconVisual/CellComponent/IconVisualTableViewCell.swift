@@ -19,14 +19,18 @@ class IconVisualTableViewCell: UITableViewCell {
     @IBOutlet weak var messageLabel: UILabel!
     
     struct Component {
+        var name: String
+        var message: String
+        var image: UIImage
     }
     
     private var component: Component?
     
     func setupCell(component: Component) {
         self.component = component
-        nameLabel.text = "Fuya"
-        messageLabel.text = "ヤッホー！"
+        nameLabel.text = component.name
+        messageLabel.text = component.message
+        iconImageView.image = component.image
     }
 }
 
