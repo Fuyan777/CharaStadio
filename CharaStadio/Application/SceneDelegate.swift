@@ -6,11 +6,11 @@
 //
 
 import UIKit
+import CoreSpotlight
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         // Use this method to optionally configure and attach the UIWindow `window` to the provided UIWindowScene `scene`.
@@ -20,6 +20,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window = self.window
         guard let _ = (scene as? UIWindowScene) else { return }
+        
+        if let userActivity = connectionOptions.userActivities.first {
+            executeUserActivity(userActivity)
+        }
     }
 
     func sceneDidDisconnect(_ scene: UIScene) {
@@ -53,3 +57,35 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
 }
 
+// MARK: - UserActivity
+
+extension SceneDelegate {
+    
+    func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+        executeUserActivity(userActivity)
+    }
+    
+    private func executeUserActivity(_ userActivity: NSUserActivity) {
+        switch userActivity.activityType {
+        case CSSearchableItemActionType:
+            executeSpotlightActivity(userActivity)
+        default:
+            return
+        }
+    }
+    
+    private func executeSpotlightActivity(_ userActivity: NSUserActivity) {
+        guard let key = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String,
+              let charaDetail = UserDefaultsClient().loadChara(key: key),
+              let nav = self.window?.rootViewController as? UINavigationController else {
+            return
+        }
+        
+        nav.dismiss(animated: false)
+        nav.popToRootViewController(animated: false)
+        let storyboard: UIStoryboard = UIStoryboard(name: "CharaDetail", bundle: nil)
+        let charaDetailVC = storyboard.instantiateViewController(withIdentifier: "detail") as! CharaDetailViewController
+        charaDetailVC.charaDetail = charaDetail
+        nav.pushViewController(charaDetailVC, animated: true)
+    }
+}

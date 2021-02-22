@@ -36,6 +36,7 @@ class CharaListViewController: UIViewController {
     }
     
     private let model: CharaListModelProtocol = CharaListModel()
+    private let spotlight: SpotlightRepositoryProtocol = SpotlightRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -89,6 +90,11 @@ extension CharaListViewController: UICollectionViewDataSource {
 
 extension CharaListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        spotlight.saveChara(charaInfo: model.entity[indexPath.row])
+        UserDefaultsClient().saveChara(
+            model.entity[indexPath.row],
+            forkey: "chara://detail?id=\(model.entity[indexPath.row].id)"
+        )
         let storyboard: UIStoryboard = UIStoryboard(name: "CharaDetail", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "detail") as! CharaDetailViewController
         nextView.charaDetail = model.entity[indexPath.row]

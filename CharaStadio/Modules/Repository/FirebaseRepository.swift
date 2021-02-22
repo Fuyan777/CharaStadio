@@ -25,17 +25,18 @@ class FirebaseRepository: FirebaseRepositoryProtocol {
             guard let querySnapshot = querySnapshot else {
                 fatalError("Fail to unwrap `querySnapshot`.")
             }
-
+            
             var charaList: [CharaEntity] = []
             for document in querySnapshot.documents {
                 let charaInfo = document.data()
-                guard let name = charaInfo["name"] as? String,
+                guard let id = charaInfo["id"] as? Int,
+                      let name = charaInfo["name"] as? String,
                       let description = charaInfo["description"] as? String,
                       let imageRef = charaInfo["image_ref"] as? String else {
                     continue
                 }
                 
-                charaList.append(CharaEntity(name: name, description: description, imageRef: imageRef, order: Date()))
+                charaList.append(CharaEntity(id: id, name: name, description: description, imageRef: imageRef, order: Date()))
             }
             
             completion(.success(charaList))
