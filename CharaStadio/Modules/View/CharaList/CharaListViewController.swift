@@ -49,8 +49,6 @@ class CharaListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.barTintColor = Asset.accentColor.color
-        navigationController?.navigationBar.tintColor = .white
     }
     
     private func fetchData() {

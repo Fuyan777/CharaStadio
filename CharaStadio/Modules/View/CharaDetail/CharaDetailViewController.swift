@@ -34,7 +34,6 @@ class CharaDetailViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = charaDetail.name
-        navigationController?.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.white ]
         setupFavoriteImage()
     }
     

@@ -25,9 +25,6 @@ class CharaFavoriteViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.barTintColor = Asset.accentColor.color
-        navigationController?.navigationBar.tintColor = .white
-        navigationController?.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.white ]
         navigationItem.title = "お気に入り"
     }
     

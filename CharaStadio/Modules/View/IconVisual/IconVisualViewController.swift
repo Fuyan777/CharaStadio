@@ -39,7 +39,6 @@ class IconVisualViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = "アイコンを確認しよう"
-        navigationController?.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.white ]
     }
     
     @objc private func selectIcon() {
