@@ -45,16 +45,12 @@ class CharaListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
-        UserDefaultsClient().removeAll() // 消す
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barTintColor = Asset.accentColor.color
         navigationController?.navigationBar.tintColor = .white
-        print("===================================")// 消す
-        print(UserDefaultsClient().loadFavoriteAll())
-        print("===================================")
     }
     
     private func fetchData() {

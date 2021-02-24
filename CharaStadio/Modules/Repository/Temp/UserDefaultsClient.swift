@@ -61,7 +61,10 @@ extension UserDefaultsClient {
                 tmpList.append(chara)
             }
         }
-        return tmpList
+        let tmpListSorted = tmpList.sorted(by: { (value1, value2) -> Bool in
+            return value1.id > value2.id
+        })
+        return tmpListSorted
     }
 
 }
