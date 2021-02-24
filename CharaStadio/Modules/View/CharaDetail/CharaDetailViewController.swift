@@ -14,6 +14,12 @@ class CharaDetailViewController: UIViewController {
         didSet { shareButton.addTarget(self, action: #selector(shareSns), for: .touchUpInside) }
     }
     
+    @IBOutlet weak var favoriteButton: UIButton! {
+        didSet {
+            favoriteButton.addTarget(self, action: #selector(tapFavorite), for: .touchUpInside)
+        }
+    }
+    
     @IBOutlet weak var charaImageView: UIImageView!
     @IBOutlet weak var charaDescriptionLabel: UILabel!
     
@@ -29,6 +35,7 @@ class CharaDetailViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.title = charaDetail.name
         navigationController?.navigationBar.titleTextAttributes = [ .foregroundColor: UIColor.white ]
+        setupFavoriteImage()
     }
     
     private func setupChara() {
@@ -43,6 +50,26 @@ class CharaDetailViewController: UIViewController {
         let items: [Any?] = [image, charaDetail.name, text]
         let activityVC = UIActivityViewController(activityItems: items as [Any], applicationActivities: nil)
         self.present(activityVC, animated: true, completion: nil)
+    }
+    
+    @objc func tapFavorite() {
+        charaDetail.isFavorite.toggle()
+        setupFavoriteImage()
+        
+        let tmpKey = "favo=\(charaDetail.id)"
+        
+        if charaDetail.isFavorite == true {
+            UserDefaultsClient().saveChara(charaDetail, forkey: tmpKey)
+        } else {
+            UserDefaultsClient().removeChara(key: tmpKey)
+        }
+    }
+    
+    func setupFavoriteImage() {
+        let image = charaDetail.isFavorite
+            ? UIImage(systemName: "bookmark.fill")
+            : UIImage(systemName: "bookmark")
+        favoriteButton.setImage(image, for: .normal)
     }
     
     func getImage(imageRef: String, imageView: UIImageView) {

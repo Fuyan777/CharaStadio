@@ -12,5 +12,6 @@ struct CharaEntity: Codable {
     var name: String
     var description: String
     var imageRef: String
-    let order: Date
+    var isFavorite: Bool = false
+    var order: Date
 }

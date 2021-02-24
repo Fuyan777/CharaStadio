@@ -47,20 +47,34 @@
                             <constraint firstItem="bBw-oz-uG3" firstAttribute="centerY" secondItem="3Uu-KJ-boA" secondAttribute="centerY" id="je6-NO-Je7"/>
                         </constraints>
                     </view>
+                    <toolbarItems/>
                     <navigationItem key="navigationItem" id="G1P-kg-etJ">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="ZkB-8z-Vtb">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JLn-Xm-Au5">
-                                <rect key="frame" x="371" y="9" width="23" height="26"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem style="plain" id="ZkB-8z-Vtb">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="JLn-Xm-Au5">
+                                    <rect key="frame" x="371" y="9" width="23" height="26"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="square.and.arrow.up" catalog="system" symbolScale="large"/>
+                                    </state>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem style="plain" id="zs7-AI-UQn">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vFx-1n-o50">
+                                    <rect key="frame" x="337" y="9.5" width="40" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="bookmark" catalog="system" symbolScale="large"/>
+                                    </state>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="charaDescriptionLabel" destination="kbb-r3-0Gp" id="IIZ-2R-aUS"/>
                         <outlet property="charaImageView" destination="I5v-C6-KMU" id="UB6-ZW-emB"/>
+                        <outlet property="favoriteButton" destination="vFx-1n-o50" id="mNa-1w-4CZ"/>
                         <outlet property="shareButton" destination="JLn-Xm-Au5" id="XgY-ry-Xwb"/>
                     </connections>
                 </viewController>
@@ -88,6 +102,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="bookmark" catalog="system" width="112" height="128"/>
         <image name="square.and.arrow.up" catalog="system" width="115" height="128"/>
         <namedColor name="TextColor">
             <color red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>

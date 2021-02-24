@@ -17,6 +17,10 @@ class CharaListViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var bookmarksButton: UIButton! {
+        didSet { bookmarksButton.addTarget(self, action: #selector(moveBookmarks), for: .touchUpInside) }
+    }
+    
     @IBOutlet weak var settingButton: UIButton! {
         didSet { settingButton.addTarget(self, action: #selector(moveSetting), for: .touchUpInside) }
     }
@@ -41,15 +45,19 @@ class CharaListViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         fetchData()
+        UserDefaultsClient().removeAll() // 消す
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationController?.navigationBar.barTintColor = Asset.accentColor.color
         navigationController?.navigationBar.tintColor = .white
+        print("===================================")// 消す
+        print(UserDefaultsClient().loadFavoriteAll())
+        print("===================================")
     }
     
-    func fetchData() {
+    private func fetchData() {
         self.startLoad()
         model.fetchData(completion: { result in
             switch result {
@@ -62,15 +70,21 @@ class CharaListViewController: UIViewController {
         })
     }
     
-    @objc func moveSetting() {
+    @objc private func moveSetting() {
         let storyboard: UIStoryboard = UIStoryboard(name: "Setting", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "setting") as! SettingViewController
         self.navigationController?.pushViewController(nextView, animated: true)
     }
     
-    @objc func moveIconVisual() {
+    @objc private func moveIconVisual() {
         let storyboard: UIStoryboard = UIStoryboard(name: "IconVisual", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "iconVisual") as! IconVisualViewController
+        self.navigationController?.pushViewController(nextView, animated: true)
+    }
+    
+    @objc private func moveBookmarks() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "CharaFavorite", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "favorite") as! CharaFavoriteViewController
         self.navigationController?.pushViewController(nextView, animated: true)
     }
 }
@@ -95,9 +109,14 @@ extension CharaListViewController: UICollectionViewDelegate {
             model.entity[indexPath.row],
             forkey: "chara://detail?id=\(model.entity[indexPath.row].id)"
         )
+        
         let storyboard: UIStoryboard = UIStoryboard(name: "CharaDetail", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "detail") as! CharaDetailViewController
+        
         nextView.charaDetail = model.entity[indexPath.row]
+        if let tmp = UserDefaultsClient().loadChara(key: "favo=\(model.entity[indexPath.row].id)") {
+            nextView.charaDetail.isFavorite = tmp.isFavorite
+        }
         self.navigationController?.pushViewController(nextView, animated: true)
     }
 }

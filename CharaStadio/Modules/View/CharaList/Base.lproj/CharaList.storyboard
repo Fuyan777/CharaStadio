@@ -84,17 +84,29 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="lxM-Rf-IRV">
-                        <barButtonItem key="rightBarButtonItem" style="plain" id="0gX-t3-Ks9">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hdM-vY-1Oj">
-                                <rect key="frame" x="319" y="9.5" width="75" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" style="plain" id="0gX-t3-Ks9">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hdM-vY-1Oj">
+                                    <rect key="frame" x="364" y="9.5" width="30" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
+                                    </state>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem title="Item" style="plain" id="sbe-ph-Ycv">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="aJD-GG-Mft">
+                                    <rect key="frame" x="316" y="11" width="40" height="22.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="book" catalog="system" symbolScale="large"/>
+                                    </state>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <connections>
+                        <outlet property="bookmarksButton" destination="aJD-GG-Mft" id="8ZU-UB-gkX"/>
                         <outlet property="charaCollectionView" destination="CrL-sQ-NhF" id="czX-fl-nJc"/>
                         <outlet property="iconVisualButton" destination="QvS-aC-nCO" id="qGz-CV-3Ok"/>
                         <outlet property="settingButton" destination="hdM-vY-1Oj" id="K64-Fa-Pjf"/>
@@ -136,6 +148,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book" catalog="system" width="128" height="102"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
         <namedColor name="AccentColor">
