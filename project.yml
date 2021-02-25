@@ -21,7 +21,7 @@ targets:
       Release: configs/CharaStadio-Release.xcconfig
     settings:
       CURRENT_PROJECT_VERSION: 1
-      MARKETING_VERSION: 1.0.3
+      MARKETING_VERSION: 1.0.4
       TARGETED_DEVICE_FAMILY: 1
     dependencies:
       - target: CharaStadioStickers
