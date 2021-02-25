@@ -17,6 +17,13 @@ class CharaListViewController: UIViewController {
         }
     }
     
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.delegate = self
+            searchBar.barTintColor = Asset.viewBgColor.color
+        }
+    }
+    
     @IBOutlet weak var bookmarksButton: UIButton! {
         didSet { bookmarksButton.addTarget(self, action: #selector(moveBookmarks), for: .touchUpInside) }
     }
@@ -39,7 +46,7 @@ class CharaListViewController: UIViewController {
         }
     }
     
-    private let model: CharaListModelProtocol = CharaListModel()
+    private var model: CharaListModelProtocol = CharaListModel()
     private let spotlight: SpotlightRepositoryProtocol = SpotlightRepository()
     
     override func viewDidLoad() {
@@ -56,6 +63,7 @@ class CharaListViewController: UIViewController {
         model.fetchData(completion: { result in
             switch result {
             case .success:
+                self.model.searchResult = self.model.entity
                 self.charaCollectionView.reloadData()
                 self.finishLoad()
             case let .failure(error):
@@ -85,12 +93,12 @@ class CharaListViewController: UIViewController {
 
 extension CharaListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.entity.count
+        return model.searchResult.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as CharaCollectionViewCell
-        let component = CharaCollectionViewCell.Component(charaInfo: model.entity[indexPath.row])
+        let component = CharaCollectionViewCell.Component(charaInfo: model.searchResult[indexPath.row])
         cell.setupCell(component: component)
         return cell
     }
@@ -118,5 +126,33 @@ extension CharaListViewController: UICollectionViewDelegate {
 extension CharaListViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.charaCollectionView.frame.width - 8.0 * 2, height: 116.0)
+    }
+}
+
+extension CharaListViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar) {
+        view.endEditing(true)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        model.removeAll()
+
+        if searchText.isEmpty {
+            clearSearch()
+        } else {
+            model.entity.forEach {
+                if $0.name.contains(searchText) {
+                    model.searchResult.append($0)
+                }
+            }
+        }
+        
+        charaCollectionView.reloadData()
+    }
+    
+    private func clearSearch() {
+        model.removeAll()
+        model.searchResult = model.entity
+        charaCollectionView.reloadData()
     }
 }

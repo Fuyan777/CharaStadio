@@ -20,7 +20,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CrL-sQ-NhF">
-                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <rect key="frame" x="0.0" y="144" width="414" height="718"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Cfs-Ex-wdJ">
                                     <size key="itemSize" width="128" height="128"/>
@@ -71,15 +71,23 @@
                                     <constraint firstAttribute="trailing" secondItem="QvS-aC-nCO" secondAttribute="trailing" id="zfp-Tb-x22"/>
                                 </constraints>
                             </view>
+                            <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1M2-SB-jyh">
+                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" name="ViewBgColor"/>
                         <constraints>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="CrL-sQ-NhF" secondAttribute="bottom" id="D7C-Ig-fov"/>
-                            <constraint firstItem="CrL-sQ-NhF" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Mxh-yR-6aa"/>
+                            <constraint firstItem="CrL-sQ-NhF" firstAttribute="top" secondItem="1M2-SB-jyh" secondAttribute="bottom" id="Sae-UJ-aBJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CrL-sQ-NhF" secondAttribute="trailing" id="TUk-jf-tcf"/>
+                            <constraint firstItem="1M2-SB-jyh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TxK-rL-2zQ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dSp-CA-b2D" secondAttribute="trailing" constant="24" id="cet-6L-Gjc"/>
+                            <constraint firstItem="1M2-SB-jyh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dhx-as-N1k"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dSp-CA-b2D" secondAttribute="bottom" constant="24" id="hoB-wE-hHa"/>
+                            <constraint firstItem="CrL-sQ-NhF" firstAttribute="top" secondItem="1M2-SB-jyh" secondAttribute="bottom" id="iwe-zI-fUF"/>
+                            <constraint firstItem="1M2-SB-jyh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jDR-A5-lI2"/>
                             <constraint firstItem="CrL-sQ-NhF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mGz-eg-AaA"/>
                         </constraints>
                     </view>
@@ -109,6 +117,7 @@
                         <outlet property="bookmarksButton" destination="aJD-GG-Mft" id="8ZU-UB-gkX"/>
                         <outlet property="charaCollectionView" destination="CrL-sQ-NhF" id="czX-fl-nJc"/>
                         <outlet property="iconVisualButton" destination="QvS-aC-nCO" id="qGz-CV-3Ok"/>
+                        <outlet property="searchBar" destination="1M2-SB-jyh" id="RUg-lv-qbd"/>
                         <outlet property="settingButton" destination="hdM-vY-1Oj" id="K64-Fa-Pjf"/>
                         <outlet property="visualButtonBaseView" destination="dSp-CA-b2D" id="Z3q-3S-rQ4"/>
                         <segue destination="H4l-i1-VcN" kind="show" identifier="detail" id="gjA-Pw-U61"/>
