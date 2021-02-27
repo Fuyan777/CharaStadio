@@ -7,4 +7,8 @@
 */
 
 // String
-"hashtag" = "#charasta";
+"hashtag" = "#YanArt";
+
+// Navigation
+"navigation.iconVisualTitle" = "アイコンを確認しよう";
+"navigation.favoriteTitle" = "お気に入り";
