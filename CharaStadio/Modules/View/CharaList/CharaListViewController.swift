@@ -24,10 +24,6 @@ class CharaListViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var bookmarksButton: UIButton! {
-        didSet { bookmarksButton.addTarget(self, action: #selector(moveBookmarks), for: .touchUpInside) }
-    }
-    
     @IBOutlet weak var settingButton: UIButton! {
         didSet { settingButton.addTarget(self, action: #selector(moveSetting), for: .touchUpInside) }
     }
@@ -83,12 +79,6 @@ class CharaListViewController: UIViewController {
         let nextView = storyboard.instantiateViewController(withIdentifier: "iconVisual") as! IconVisualViewController
         self.navigationController?.pushViewController(nextView, animated: true)
     }
-    
-    @objc private func moveBookmarks() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "CharaFavorite", bundle: nil)
-        let nextView = storyboard.instantiateViewController(withIdentifier: "favorite") as! CharaFavoriteViewController
-        self.navigationController?.pushViewController(nextView, animated: true)
-    }
 }
 
 extension CharaListViewController: UICollectionViewDataSource {
@@ -130,7 +120,7 @@ extension CharaListViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension CharaListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
     
