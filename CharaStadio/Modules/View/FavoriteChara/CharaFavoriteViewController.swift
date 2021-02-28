@@ -16,7 +16,7 @@ class CharaFavoriteViewController: UIViewController {
         }
     }
     
-    let charaInfo = UserDefaultsClient().loadFavoriteAll()
+    var charaInfo: [CharaEntity]!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +26,8 @@ class CharaFavoriteViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         navigationItem.title = L10n.Navigation.favoriteTitle
+        charaInfo = UserDefaultsClient().loadFavoriteAll()
+        favoriteCollectionView.reloadData()
     }
     
 }
