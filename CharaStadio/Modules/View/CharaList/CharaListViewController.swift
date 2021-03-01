@@ -28,19 +28,11 @@ class CharaListViewController: UIViewController {
         didSet { settingButton.addTarget(self, action: #selector(moveSetting), for: .touchUpInside) }
     }
     
-//    @IBOutlet weak var visualButtonBaseView: UIView! {
-//        didSet {
-//            visualButtonBaseView.allMaskCorner()
-//            visualButtonBaseView.backgroundColor = Asset.accentColor.color
-//        }
-//    }
-//
-//    @IBOutlet weak var iconVisualButton: UIButton! {
-//        didSet {
-//            iconVisualButton.backgroundColor = .clear
-//            iconVisualButton.addTarget(self, action: #selector(moveIconVisual), for: .touchUpInside)
-//        }
-//    }
+    @IBOutlet weak var favoriteButton: UIButton! {
+        didSet {
+            favoriteButton.addTarget(self, action: #selector(moveFavorite), for: .touchUpInside)
+        }
+    }
     
     private var model: CharaListModelProtocol = CharaListModel()
     private let spotlight: SpotlightRepositoryProtocol = SpotlightRepository()
@@ -74,11 +66,11 @@ class CharaListViewController: UIViewController {
         self.navigationController?.pushViewController(nextView, animated: true)
     }
     
-//    @objc private func moveIconVisual() {
-//        let storyboard: UIStoryboard = UIStoryboard(name: "IconVisual", bundle: nil)
-//        let nextView = storyboard.instantiateViewController(withIdentifier: "iconVisual") as! IconVisualViewController
-//        self.navigationController?.pushViewController(nextView, animated: true)
-//    }
+    @objc private func moveFavorite() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "CharaFavorite", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "favorite") as! CharaFavoriteViewController
+        self.navigationController?.pushViewController(nextView, animated: true)
+    }
 }
 
 extension CharaListViewController: UICollectionViewDataSource {

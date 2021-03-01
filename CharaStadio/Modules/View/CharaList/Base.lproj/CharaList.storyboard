@@ -59,19 +59,31 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="ホーム" image="house" catalog="system" id="7df-Tc-2LH"/>
                     <navigationItem key="navigationItem" id="lxM-Rf-IRV">
-                        <barButtonItem key="rightBarButtonItem" title="Item" style="plain" id="0gX-t3-Ks9">
-                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hdM-vY-1Oj">
-                                <rect key="frame" x="364" y="9.5" width="30" height="25"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal">
-                                    <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
-                                </state>
-                            </button>
-                        </barButtonItem>
+                        <rightBarButtonItems>
+                            <barButtonItem title="Item" style="plain" id="0gX-t3-Ks9">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="hdM-vY-1Oj">
+                                    <rect key="frame" x="364" y="9.5" width="30" height="25"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="gearshape" catalog="system" symbolScale="large"/>
+                                    </state>
+                                </button>
+                            </barButtonItem>
+                            <barButtonItem title="Item" style="plain" id="fEH-xN-mcI">
+                                <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="DmE-te-U23">
+                                    <rect key="frame" x="316" y="11" width="40" height="22.5"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <state key="normal">
+                                        <imageReference key="image" image="book" catalog="system" symbolScale="large"/>
+                                    </state>
+                                </button>
+                            </barButtonItem>
+                        </rightBarButtonItems>
                     </navigationItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="charaCollectionView" destination="CrL-sQ-NhF" id="czX-fl-nJc"/>
+                        <outlet property="favoriteButton" destination="DmE-te-U23" id="tN2-zP-Z72"/>
                         <outlet property="searchBar" destination="1M2-SB-jyh" id="RUg-lv-qbd"/>
                         <outlet property="settingButton" destination="hdM-vY-1Oj" id="K64-Fa-Pjf"/>
                     </connections>
@@ -100,6 +112,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="book" catalog="system" width="128" height="102"/>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
         <namedColor name="ViewBgColor">
