@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="v8H-gw-9WE">
-                                <rect key="frame" x="0.0" y="44" width="414" height="818"/>
+                                <rect key="frame" x="0.0" y="44" width="414" height="769"/>
                                 <color key="backgroundColor" name="ViewBgColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Gv1-ce-VZf">
                                     <size key="itemSize" width="128" height="128"/>
@@ -47,13 +47,15 @@
                             <constraint firstItem="v8H-gw-9WE" firstAttribute="top" secondItem="NjD-57-dav" secondAttribute="top" id="yC0-rP-FB1"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="xW7-gz-5KU"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="favoriteCollectionView" destination="v8H-gw-9WE" id="rZ1-TA-cyI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="EBw-06-WLg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53.623188405797109" y="76.339285714285708"/>
+            <point key="canvasLocation" x="963.76811594202911" y="76.339285714285708"/>
         </scene>
     </scenes>
     <resources>

@@ -24,25 +24,13 @@ class CharaListViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var bookmarksButton: UIButton! {
-        didSet { bookmarksButton.addTarget(self, action: #selector(moveBookmarks), for: .touchUpInside) }
-    }
-    
     @IBOutlet weak var settingButton: UIButton! {
         didSet { settingButton.addTarget(self, action: #selector(moveSetting), for: .touchUpInside) }
     }
     
-    @IBOutlet weak var visualButtonBaseView: UIView! {
+    @IBOutlet weak var favoriteButton: UIButton! {
         didSet {
-            visualButtonBaseView.allMaskCorner()
-            visualButtonBaseView.backgroundColor = Asset.accentColor.color
-        }
-    }
-    
-    @IBOutlet weak var iconVisualButton: UIButton! {
-        didSet {
-            iconVisualButton.backgroundColor = .clear
-            iconVisualButton.addTarget(self, action: #selector(moveIconVisual), for: .touchUpInside)
+            favoriteButton.addTarget(self, action: #selector(moveFavorite), for: .touchUpInside)
         }
     }
     
@@ -78,13 +66,7 @@ class CharaListViewController: UIViewController {
         self.navigationController?.pushViewController(nextView, animated: true)
     }
     
-    @objc private func moveIconVisual() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "IconVisual", bundle: nil)
-        let nextView = storyboard.instantiateViewController(withIdentifier: "iconVisual") as! IconVisualViewController
-        self.navigationController?.pushViewController(nextView, animated: true)
-    }
-    
-    @objc private func moveBookmarks() {
+    @objc private func moveFavorite() {
         let storyboard: UIStoryboard = UIStoryboard(name: "CharaFavorite", bundle: nil)
         let nextView = storyboard.instantiateViewController(withIdentifier: "favorite") as! CharaFavoriteViewController
         self.navigationController?.pushViewController(nextView, animated: true)
@@ -130,7 +112,7 @@ extension CharaListViewController: UICollectionViewDelegateFlowLayout {
 }
 
 extension CharaListViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar) {
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
     
