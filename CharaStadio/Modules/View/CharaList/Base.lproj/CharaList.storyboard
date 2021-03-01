@@ -39,38 +39,6 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dSp-CA-b2D">
-                                <rect key="frame" x="334" y="733" width="56" height="56"/>
-                                <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="yQG-d1-6Gq">
-                                        <rect key="frame" x="2" y="7" width="50" height="44.5"/>
-                                        <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <imageReference key="image" image="person.fill.badge.plus" catalog="system" renderingMode="template"/>
-                                        <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="small"/>
-                                    </imageView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QvS-aC-nCO">
-                                        <rect key="frame" x="0.0" y="0.0" width="56" height="56"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="56" id="011-DM-Q9W"/>
-                                            <constraint firstAttribute="height" constant="56" id="WnC-4a-gri"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" name="AccentColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="trailing" secondItem="yQG-d1-6Gq" secondAttribute="trailing" constant="4" id="CVl-Bl-aQg"/>
-                                    <constraint firstItem="yQG-d1-6Gq" firstAttribute="leading" secondItem="dSp-CA-b2D" secondAttribute="leading" constant="4" id="FRs-Rg-6R7"/>
-                                    <constraint firstAttribute="bottom" secondItem="QvS-aC-nCO" secondAttribute="bottom" id="OVZ-lk-8Tw"/>
-                                    <constraint firstAttribute="width" constant="56" id="VkM-Pp-hHV"/>
-                                    <constraint firstAttribute="bottom" secondItem="yQG-d1-6Gq" secondAttribute="bottom" constant="4" id="ipY-cM-vPu"/>
-                                    <constraint firstItem="QvS-aC-nCO" firstAttribute="top" secondItem="dSp-CA-b2D" secondAttribute="top" id="mMa-JS-i1g"/>
-                                    <constraint firstItem="yQG-d1-6Gq" firstAttribute="top" secondItem="dSp-CA-b2D" secondAttribute="top" constant="4" id="onM-9A-bQx"/>
-                                    <constraint firstItem="QvS-aC-nCO" firstAttribute="leading" secondItem="dSp-CA-b2D" secondAttribute="leading" id="uaU-ah-VET"/>
-                                    <constraint firstAttribute="height" constant="56" id="xie-bC-KqA"/>
-                                    <constraint firstAttribute="trailing" secondItem="QvS-aC-nCO" secondAttribute="trailing" id="zfp-Tb-x22"/>
-                                </constraints>
-                            </view>
                             <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="1M2-SB-jyh">
                                 <rect key="frame" x="0.0" y="88" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
@@ -83,9 +51,7 @@
                             <constraint firstItem="CrL-sQ-NhF" firstAttribute="top" secondItem="1M2-SB-jyh" secondAttribute="bottom" id="Sae-UJ-aBJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="CrL-sQ-NhF" secondAttribute="trailing" id="TUk-jf-tcf"/>
                             <constraint firstItem="1M2-SB-jyh" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="TxK-rL-2zQ"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="dSp-CA-b2D" secondAttribute="trailing" constant="24" id="cet-6L-Gjc"/>
                             <constraint firstItem="1M2-SB-jyh" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="dhx-as-N1k"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="dSp-CA-b2D" secondAttribute="bottom" constant="24" id="hoB-wE-hHa"/>
                             <constraint firstItem="CrL-sQ-NhF" firstAttribute="top" secondItem="1M2-SB-jyh" secondAttribute="bottom" id="iwe-zI-fUF"/>
                             <constraint firstItem="1M2-SB-jyh" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jDR-A5-lI2"/>
                             <constraint firstItem="CrL-sQ-NhF" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="mGz-eg-AaA"/>
@@ -106,10 +72,8 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="charaCollectionView" destination="CrL-sQ-NhF" id="czX-fl-nJc"/>
-                        <outlet property="iconVisualButton" destination="QvS-aC-nCO" id="qGz-CV-3Ok"/>
                         <outlet property="searchBar" destination="1M2-SB-jyh" id="RUg-lv-qbd"/>
                         <outlet property="settingButton" destination="hdM-vY-1Oj" id="K64-Fa-Pjf"/>
-                        <outlet property="visualButtonBaseView" destination="dSp-CA-b2D" id="Z3q-3S-rQ4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -138,10 +102,6 @@
     <resources>
         <image name="gearshape" catalog="system" width="128" height="121"/>
         <image name="house" catalog="system" width="128" height="106"/>
-        <image name="person.fill.badge.plus" catalog="system" width="128" height="124"/>
-        <namedColor name="AccentColor">
-            <color red="0.8666666666666667" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-        </namedColor>
         <namedColor name="ViewBgColor">
             <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
