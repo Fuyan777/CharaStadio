@@ -29,7 +29,7 @@ extension UIViewController {
         SVProgressHUD.dismiss()
     }
     
-    func doneMessage(msg: String = "完了しました。") {
+    func doneMessage(msg: String = "更新しました。") {
         SVProgressHUD.showSuccess(withStatus: msg)
     }
 }

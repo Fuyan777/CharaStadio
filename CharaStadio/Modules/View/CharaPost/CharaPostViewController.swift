@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CharaReloadDelegate {
+protocol CharaReloadDelegate: AnyObject {
     func reloadData()
 }
 
@@ -47,9 +47,10 @@ class CharaPostViewController: UIViewController {
         model.postChara(parameter: parameter) { result in
             switch result {
             case .success:
-                self.delegate?.reloadData()
                 self.finishLoad()
-                self.dismiss(animated: true, completion: nil)
+                self.dismiss(animated: true) {
+                    self.delegate?.reloadData()
+                }
             case let .failure(error):
                 print(error)
             }
@@ -70,10 +71,10 @@ extension CharaPostViewController: UITableViewDataSource {
         switch model.tableSection[indexPath.row] {
         case .image:
             let cell = tableView.dequeueReusableCell(for: indexPath) as FormImageTableViewCell
-            let component = FormImageTableViewCell.Component(image: UIImage(systemName: "star")) { event in
+            let component = FormImageTableViewCell.Component(image: self.model.parameter.image) { event in
                 switch event {
                 case .tap:
-                    print("image")
+                    ImagePickerManager.shared.presentImagePicker(viewController: self, types: [.photoLibrary])
                 }
             }
             cell.setupCell(component: component)
@@ -102,6 +103,15 @@ extension CharaPostViewController: UITableViewDataSource {
             cell.setupCell(component: component)
             return cell
         }
+    }
+    
+}
+
+extension CharaPostViewController: ImagePickerManagerDelegate {
+    
+    func didSelectedImage(image: UIImage) {
+        model.updateImageParameter(image: image)
+        postFormTableView.reloadData()
     }
     
 }

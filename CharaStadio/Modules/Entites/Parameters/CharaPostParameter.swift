@@ -9,7 +9,13 @@ import Foundation
 import UIKit
 
 struct CharaPostParameter {
-    var name: String
-    var description: String
+    var name: String = ""
+    var description: String = ""
     var image: UIImage
+    
+    init() {
+        self.name = ""
+        self.description = ""
+        self.image = Asset.noImage.image
+    }
 }

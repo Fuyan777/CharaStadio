@@ -9,7 +9,9 @@ import UIKit
 
 class FormImageTableViewCell: UITableViewCell {
     @IBOutlet weak var charaImageView: UIImageView!
-    @IBOutlet weak var selectCharaButton: UIButton!
+    @IBOutlet weak var selectCharaButton: UIButton! {
+        didSet { selectCharaButton.addTarget(self, action: #selector(selectedCharaImage), for: .touchUpInside) }
+    }
     
     struct Component {
         enum Event {
@@ -24,6 +26,11 @@ class FormImageTableViewCell: UITableViewCell {
     
     func setupCell(component: Component) {
         self.component = component
+        charaImageView.image = component.image
     }
     
+    @objc
+    private func selectedCharaImage() {
+        component?.event(.tap)
+    }
 }

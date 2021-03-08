@@ -16,7 +16,7 @@ class CharaPostModel {
     
     let firebaseModel = FirebaseRepository()
     let tableSection = FormType.allCases
-    private(set) var parameter: CharaPostParameter!
+    private(set) var parameter: CharaPostParameter = CharaPostParameter()
     
     func updateNameParameter(name: String) {
         self.parameter.name = name
@@ -24,6 +24,10 @@ class CharaPostModel {
     
     func updateDescriptionParameter(description: String) {
         self.parameter.description = description
+    }
+    
+    func updateImageParameter(image: UIImage) {
+        self.parameter.image = image
     }
     
     func postChara(parameter: CharaPostParameter, completion: @escaping (Result<Void, Error>) -> Void) {
