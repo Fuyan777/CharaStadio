@@ -28,4 +28,8 @@ extension UIViewController {
     func finishLoad() {
         SVProgressHUD.dismiss()
     }
+    
+    func doneMessage(msg: String = "完了しました。") {
+        SVProgressHUD.showSuccess(withStatus: msg)
+    }
 }

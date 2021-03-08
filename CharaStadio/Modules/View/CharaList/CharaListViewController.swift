@@ -23,14 +23,10 @@ class CharaListViewController: UIViewController {
             searchBar.barTintColor = Asset.viewBgColor.color
         }
     }
-    
-    @IBOutlet weak var settingButton: UIButton! {
-        didSet { settingButton.addTarget(self, action: #selector(moveSetting), for: .touchUpInside) }
-    }
-    
-    @IBOutlet weak var favoriteButton: UIButton! {
+    @IBOutlet weak var postCharaButton: UIButton! {
         didSet {
-            favoriteButton.addTarget(self, action: #selector(moveFavorite), for: .touchUpInside)
+            postCharaButton.allMaskCorner()
+            postCharaButton.addTarget(self, action: #selector(movePost), for: .touchUpInside)
         }
     }
     
@@ -53,17 +49,19 @@ class CharaListViewController: UIViewController {
             case .success:
                 self.model.searchResult = self.model.entity
                 self.charaCollectionView.reloadData()
-                self.finishLoad()
+                self.doneMessage()
             case let .failure(error):
                 self.alertError(error: error)
             }
         })
     }
     
-    @objc private func moveSetting() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "Setting", bundle: nil)
-        let nextView = storyboard.instantiateViewController(withIdentifier: "setting") as! SettingViewController
-        self.navigationController?.pushViewController(nextView, animated: true)
+    @objc private func movePost() {
+        let storyboard: UIStoryboard = UIStoryboard(name: "CharaPost", bundle: nil)
+        let nextView = storyboard.instantiateViewController(withIdentifier: "post") as! CharaPostViewController
+        // TODO: 後で修正
+        //        nextView.modalPresentationStyle = .fullScreen
+        self.present(nextView, animated: true)
     }
     
     @objc private func moveFavorite() {
@@ -135,6 +133,12 @@ extension CharaListViewController: UISearchBarDelegate {
     private func clearSearch() {
         model.removeAll()
         model.searchResult = model.entity
+        charaCollectionView.reloadData()
+    }
+}
+
+extension CharaListViewController: CharaReloadDelegate {
+    func reloadData() {
         charaCollectionView.reloadData()
     }
 }

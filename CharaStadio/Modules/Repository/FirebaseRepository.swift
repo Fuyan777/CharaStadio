@@ -6,14 +6,19 @@
 //
 
 import FirebaseFirestore
+import FirebaseStorage
 import FirebaseUI
+import UIKit
 
 protocol FirebaseRepositoryProtocol {
     func getChara(_ completion: @escaping (Result<[CharaEntity], Error>) -> Void)
+    func postChara(parameter: CharaPostParameter, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 class FirebaseRepository: FirebaseRepositoryProtocol {
-    let charaRef = Firestore.firestore().collection("Chara")
+    private let charaRef = Firestore.firestore().collection("Chara")
+    private let storageRef = Storage.storage().reference(forURL: "gs://charastadio-8cd04.appspot.com/")
+    
     func getChara(_ completion: @escaping (Result<[CharaEntity], Error>) -> Void) {
         charaRef.getDocuments { querySnapshot, error in
             
@@ -42,4 +47,36 @@ class FirebaseRepository: FirebaseRepositoryProtocol {
             completion(.success(charaList))
         }
     }
+    
+    func postChara(parameter: CharaPostParameter, completion: @escaping (Result<Void, Error>) -> Void) {
+        let imageRef = storageRef.child("\(parameter.name).png")
+        let data: [String: Any] = [
+            "id": 50,
+            "name": parameter.name,
+            "description": parameter.description,
+            "image_ref": parameter.name,
+            "order": Date()
+        ]
+        
+        guard let imageData = parameter.image.pngData() else { return }
+        let meta = StorageMetadata()
+        meta.contentType = "image/png"
+        imageRef.putData(imageData, metadata: meta) { metadata, error in
+            if let error = error {
+                print("Error putData: \(error)")
+            }
+            guard let metadata = metadata else { return }
+            
+            self.charaRef.addDocument(data: data) { err in
+                if let err = err {
+                    print("Error writing document: \(err)")
+                    completion(.failure(err))
+                } else {
+                    print("success")
+                    completion(.success(()))
+                }
+            }
+        }
+    }
+    
 }

@@ -1,57 +1,79 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="4IR-TK-tWK">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="iz1-2D-QpY">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="17703"/>
         <capability name="Image references" minToolsVersion="12.0"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--投稿-->
+        <!--Chara Post View Controller-->
         <scene sceneID="9ZN-xv-Tcc">
             <objects>
-                <viewController id="iz1-2D-QpY" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="post" id="iz1-2D-QpY" customClass="CharaPostViewController" customModule="CharaStadio" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jid-eL-cVu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" allowsSelection="NO" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="vJb-5Z-CNB">
+                                <rect key="frame" x="0.0" y="88" width="414" height="725"/>
+                                <color key="backgroundColor" name="CellBgColor"/>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wwQ-pa-aR0">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <color key="tintColor" name="ViewBgColor"/>
+                                <color key="barTintColor" name="AccentColor"/>
+                                <items>
+                                    <navigationItem id="urA-4M-GDc">
+                                        <barButtonItem key="leftBarButtonItem" style="plain" id="maR-Cg-pvE">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="vIK-eV-aQK">
+                                                <rect key="frame" x="20" y="11" width="21" height="22"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <state key="normal">
+                                                    <imageReference key="image" image="xmark" catalog="system" symbolScale="large"/>
+                                                </state>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="zx1-KU-eX4"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="ViewBgColor"/>
+                        <constraints>
+                            <constraint firstItem="wwQ-pa-aR0" firstAttribute="leading" secondItem="zx1-KU-eX4" secondAttribute="leading" id="BFl-Yu-KUs"/>
+                            <constraint firstItem="wwQ-pa-aR0" firstAttribute="trailing" secondItem="zx1-KU-eX4" secondAttribute="trailing" id="Rqa-Kt-iFh"/>
+                            <constraint firstItem="wwQ-pa-aR0" firstAttribute="top" secondItem="zx1-KU-eX4" secondAttribute="top" id="VZP-xl-H9E"/>
+                            <constraint firstItem="zx1-KU-eX4" firstAttribute="trailing" secondItem="vJb-5Z-CNB" secondAttribute="trailing" id="akd-BS-iin"/>
+                            <constraint firstItem="vJb-5Z-CNB" firstAttribute="leading" secondItem="zx1-KU-eX4" secondAttribute="leading" id="oOP-AL-M0g"/>
+                            <constraint firstItem="zx1-KU-eX4" firstAttribute="bottom" secondItem="vJb-5Z-CNB" secondAttribute="bottom" id="pbQ-3P-TQM"/>
+                            <constraint firstItem="vJb-5Z-CNB" firstAttribute="top" secondItem="wwQ-pa-aR0" secondAttribute="bottom" id="sAV-0o-PHY"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="投稿" id="K59-yl-ARm">
-                        <imageReference key="image" image="plus.app" catalog="system" symbolScale="large"/>
-                    </tabBarItem>
                     <navigationItem key="navigationItem" id="vO0-CE-c0E"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
+                    <connections>
+                        <outlet property="closeButton" destination="vIK-eV-aQK" id="Owv-bl-zQE"/>
+                        <outlet property="postFormTableView" destination="vJb-5Z-CNB" id="AYv-zn-jpV"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Qo6-nt-Slt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1147.8260869565217" y="114.50892857142857"/>
         </scene>
-        <!--Navigation Controller-->
-        <scene sceneID="ziN-a7-Eck">
-            <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="4IR-TK-tWK" sceneMemberID="viewController">
-                    <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="MlO-MQ-I6c">
-                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
-                        <autoresizingMask key="autoresizingMask"/>
-                    </navigationBar>
-                    <nil name="viewControllers"/>
-                    <connections>
-                        <segue destination="iz1-2D-QpY" kind="relationship" relationship="rootViewController" id="iPL-dX-bFs"/>
-                    </connections>
-                </navigationController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="jTK-7i-7Da" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="237.68115942028987" y="114.50892857142857"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="plus.app" catalog="system" width="128" height="114"/>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="xmark" catalog="system" width="128" height="113"/>
+        <namedColor name="AccentColor">
+            <color red="0.8666666666666667" green="0.25098039215686274" blue="0.25098039215686274" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
+        <namedColor name="CellBgColor">
+            <color red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
+        <namedColor name="ViewBgColor">
+            <color red="0.9570000171661377" green="0.9570000171661377" blue="0.9570000171661377" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>

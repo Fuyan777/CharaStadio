@@ -17,20 +17,20 @@
             </objects>
             <point key="canvasLocation" x="2705" y="2"/>
         </scene>
-        <!--Mypage-->
+        <!--Setting-->
         <scene sceneID="4lF-Uo-Doh">
             <objects>
-                <viewControllerPlaceholder storyboardName="Mypage" id="aBQ-Lm-SWB" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="Setting" id="aBQ-Lm-SWB" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="M0C-1D-2Pr"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bgZ-Yn-zxC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2723" y="234"/>
         </scene>
-        <!--CharaPost-->
+        <!--CharaFavorite-->
         <scene sceneID="VfC-CO-AqW">
             <objects>
-                <viewControllerPlaceholder storyboardName="CharaPost" id="Amc-UZ-cWf" sceneMemberID="viewController">
+                <viewControllerPlaceholder storyboardName="CharaFavorite" id="Amc-UZ-cWf" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Item" id="KgJ-F9-QYL"/>
                 </viewControllerPlaceholder>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="baC-IK-nSR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

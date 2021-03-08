@@ -25,6 +25,12 @@ class SettingViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.title = "設定"
+    }
+
+    
     func presentSFSafariVC(urlString: String) {
         guard let url = URL(string: urlString) else { return }
         
