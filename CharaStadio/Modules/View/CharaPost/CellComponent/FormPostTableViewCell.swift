@@ -20,6 +20,7 @@ class FormPostTableViewCell: UITableViewCell {
             case tap
         }
         
+        var isEnabled: Bool
         var event: (Event) -> Void
     }
     
@@ -27,9 +28,15 @@ class FormPostTableViewCell: UITableViewCell {
     
     func setupCell(component: Component) {
         self.component = component
+        validate(isEnabled: component.isEnabled)
     }
     
     @objc private func postChara() {
         component?.event(.tap)
+    }
+    
+    func validate(isEnabled: Bool) {
+        self.postButton.isEnabled = isEnabled
+        postButton.backgroundColor = isEnabled ? Asset.accentColor.color : .lightGray
     }
 }

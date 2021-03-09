@@ -52,7 +52,7 @@ class CharaPostViewController: UIViewController {
                     self.delegate?.reloadData()
                 }
             case let .failure(error):
-                print(error)
+                self.alertError(error: error)
             }
         }
     }
@@ -87,13 +87,18 @@ extension CharaPostViewController: UITableViewDataSource {
                     self.model.updateNameParameter(name: name)
                 case let .editingDescriptionChanged(description):
                     self.model.updateDescriptionParameter(description: description)
+                case .endEditing:
+                    self.view.endEditing(true)
+                    self.model.validateParameter()
                 }
             }
             cell.setupCell(component: component)
             return cell
         case .button:
             let cell = tableView.dequeueReusableCell(for: indexPath) as FormPostTableViewCell
-            let component = FormPostTableViewCell.Component { event in
+            let component = FormPostTableViewCell.Component(
+                isEnabled: model.validateParameter()
+            ) { event in
                 switch event {
                 case .tap:
                     self.startLoad()

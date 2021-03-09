@@ -30,6 +30,13 @@ class CharaPostModel {
         self.parameter.image = image
     }
     
+    func validateParameter() -> Bool {
+        if self.parameter.name.count == 0 && self.parameter.description.count == 0 {
+            return false
+        }
+        return true
+    }
+    
     func postChara(parameter: CharaPostParameter, completion: @escaping (Result<Void, Error>) -> Void) {
         firebaseModel.postChara(parameter: parameter) { result in
             switch result {
