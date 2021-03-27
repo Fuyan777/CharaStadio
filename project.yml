@@ -1,4 +1,5 @@
 name: CharaStadio
+
 options:
   bundleIdPrefix: fuya.CharaStadio
   deploymentTarget:
@@ -30,6 +31,36 @@ targets:
         buildPhase:
           copyFiles:
             destination: plugins
+      - target: CharaStadioWidgets
+        embed: true
+
+  CharaStadioWidgets:
+    type: app-extension
+    platform: iOS
+    deploymentTarget: 14.0
+    sources:
+      - CharaStadioWidgets
+    settings: 
+      base:
+        ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME: AccentColor
+        ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME: WidgetBackground
+        CODE_SIGN_IDENTITY: "iPhone Developer"
+        CODE_SIGN_STYLE: Automatic
+        GCC_PREPROCESSOR_DEFINITIONS:
+          - "DEBUG=1"
+          - "$(inherited)"
+        INFOPLIST_FILE: CharaStadioWidgets/Info.plist
+        LD_RUNPATH_SEARCH_PATHS: 
+          - "$(inherited)"
+          - "@executable_path/Frameworks"
+          - "@executable_path/../../Frameworks"
+        PRODUCT_BUNDLE_IDENTIFIER: fuya.CharaStadio.CharaStadioWidgets
+        PRODUCT_NAME: "CharaStadioWidgets"
+        SKIP_INSTALL: YES
+        MARKETING_VERSION: 1.0.5
+    dependencies:
+      - sdk: SwiftUI.framework
+      - sdk: WidgetKit.framework
 
   CharaStadioStickers:
     type: app-extension.messages-sticker-pack
@@ -61,3 +92,7 @@ schemes:
     build:
       targets:
         CharaStadio: all
+  CharaStadioWidgets:
+    build:
+      targets:
+        CharaStadioWidgets: all
