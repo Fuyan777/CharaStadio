@@ -24,7 +24,7 @@ final class SpotlightRepository: SpotlightRepositoryProtocol {
             attributeSet = .init(itemContentType: kUTTypeData as String)
         }
         
-        let storageRef = Storage.storage().reference(forURL: "gs://charastadio-8cd04.appspot.com/")
+        let storageRef = Storage.storage().reference(forURL: Endpoint.firebaseUrl)
         let ref = storageRef.child("\(charaInfo.imageRef).png")
         ref.getData(maxSize: 1 * 1024 * 1024) { data, error in
             if error != nil {
