@@ -31,12 +31,14 @@ final class CharaListViewController: UIViewController {
         }
     }
     
+    var presenter: CharaListPresenterInterface!
+    
     private var model: CharaListModelProtocol = CharaListModel()
     private let spotlight: SpotlightRepositoryProtocol = SpotlightRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+        presenter.viewDidLoad()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,22 +46,8 @@ final class CharaListViewController: UIViewController {
         self.charaCollectionView.reloadData()
     }
     
-    private func fetchData() {
-        self.startLoad()
-        model.fetchData(completion: { result in
-            switch result {
-            case .success:
-                self.model.searchResult = self.model.entity
-                self.charaCollectionView.reloadData()
-                self.doneMessage()
-            case let .failure(error):
-                self.alertError(error: error)
-            }
-        })
-    }
-    
     @objc private func movePost() {
-        // TODO: presenter実装後
+        presenter.didTapCharaPost()
     }
 }
 
@@ -69,11 +57,11 @@ extension CharaListViewController: CharaListViewInterface {
     }
     
     func displayLodingAlert() {
-        // TODO: presenter実装後
+        self.startLoad()
     }
     
     func displayFinishLodingAlert() {
-        // TODO: presenter実装後
+        self.doneMessage()
     }
     
     func alertListError(error: Error) {
@@ -149,7 +137,6 @@ extension CharaListViewController: UISearchBarDelegate {
 
 extension CharaListViewController: CharaReloadDelegate {
     func reloadData() {
-        fetchData()
         charaCollectionView.reloadData()
     }
 }
