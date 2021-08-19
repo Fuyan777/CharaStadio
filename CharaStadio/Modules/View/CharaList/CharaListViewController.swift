@@ -23,12 +23,6 @@ class CharaListViewController: UIViewController {
             searchBar.barTintColor = Asset.viewBgColor.color
         }
     }
-    @IBOutlet weak var postCharaButton: UIButton! {
-        didSet {
-            postCharaButton.allMaskCorner()
-            postCharaButton.addTarget(self, action: #selector(movePost), for: .touchUpInside)
-        }
-    }
     
     private var model: CharaListModelProtocol = CharaListModel()
     private let spotlight: SpotlightRepositoryProtocol = SpotlightRepository()
@@ -64,12 +58,6 @@ class CharaListViewController: UIViewController {
         // TODO: 後で修正
         //        nextView.modalPresentationStyle = .fullScreen
         self.present(nextView, animated: true)
-    }
-    
-    @objc private func moveFavorite() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "CharaFavorite", bundle: nil)
-        let nextView = storyboard.instantiateViewController(withIdentifier: "favorite") as! CharaFavoriteViewController
-        self.navigationController?.pushViewController(nextView, animated: true)
     }
 }
 
