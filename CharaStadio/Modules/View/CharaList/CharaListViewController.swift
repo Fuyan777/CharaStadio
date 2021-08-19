@@ -7,7 +7,14 @@
 
 import UIKit
 
-class CharaListViewController: UIViewController {
+protocol CharaListViewInterface {
+    func displayCharaList(_ chara: [CharaEntity])
+    func displayLodingAlert()
+    func displayFinishLodingAlert()
+    func alertListError(error: Error)
+}
+
+final class CharaListViewController: UIViewController {
     @IBOutlet weak var charaCollectionView: UICollectionView! {
         didSet {
             charaCollectionView.dataSource = self
@@ -53,6 +60,24 @@ class CharaListViewController: UIViewController {
     
     @objc private func movePost() {
         // TODO: presenter実装後
+    }
+}
+
+extension CharaListViewController: CharaListViewInterface {
+    func displayCharaList(_ chara: [CharaEntity]) {
+        // TODO: presenter実装後
+    }
+    
+    func displayLodingAlert() {
+        // TODO: presenter実装後
+    }
+    
+    func displayFinishLodingAlert() {
+        // TODO: presenter実装後
+    }
+    
+    func alertListError(error: Error) {
+        alertError(error: error)
     }
 }
 
