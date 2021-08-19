@@ -52,12 +52,7 @@ class CharaListViewController: UIViewController {
     }
     
     @objc private func movePost() {
-        let storyboard: UIStoryboard = UIStoryboard(name: "CharaPost", bundle: nil)
-        let nextView = storyboard.instantiateViewController(withIdentifier: "post") as! CharaPostViewController
-        nextView.delegate = self
-        // TODO: 後で修正
-        //        nextView.modalPresentationStyle = .fullScreen
-        self.present(nextView, animated: true)
+        // TODO: presenter実装後
     }
 }
 
