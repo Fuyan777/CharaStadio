@@ -7,14 +7,14 @@
 
 import Foundation
 
-protocol CharaListInteractorInterface {
+protocol CharaListInteractorInterface: AnyObject {
     func fetchCharaList(_ completion: @escaping ((Result<[CharaEntity], Error>) -> Void))
 }
 
 final class CharaListInteractor: CharaListInteractorInterface {
     private let firebaseRepository: FirebaseRepositoryProtocol
     
-    init(firebaseRepository: FirebaseRepositoryProtocol = FirebaseRepository()) {
+    init(firebaseRepository: FirebaseRepositoryProtocol) {
         self.firebaseRepository = firebaseRepository
     }
     

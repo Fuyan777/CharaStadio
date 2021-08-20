@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol CharaListPresenterInterface {
+protocol CharaListPresenterInterface: AnyObject {
     func viewDidLoad()
     func didSelectChara(chara: CharaEntity)
     func didTapCharaPost()

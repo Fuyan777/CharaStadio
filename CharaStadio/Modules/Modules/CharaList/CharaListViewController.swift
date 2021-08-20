@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CharaListViewInterface {
+protocol CharaListViewInterface: AnyObject {
     func displayCharaList(_ chara: [CharaEntity])
     func displayLodingAlert()
     func displayFinishLodingAlert()
@@ -28,6 +28,13 @@ final class CharaListViewController: UIViewController {
         didSet {
             searchBar.delegate = self
             searchBar.barTintColor = Asset.viewBgColor.color
+        }
+    }
+    
+    @IBOutlet weak var postCharaButton: UIButton! {
+        didSet {
+            postCharaButton.allMaskCorner()
+            postCharaButton.addTarget(self, action: #selector(movePost), for: .touchUpInside)
         }
     }
     

@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol CharaListRouterInterface {
+protocol CharaListRouterInterface: AnyObject {
     func pushCharaDetail(chara: CharaEntity)
     func presentCharaPost()
 }
@@ -17,6 +17,22 @@ final class CharaListRouter {
     
     init(viewController: CharaListViewController) {
         self.viewController = viewController
+    }
+    
+    static func assembleModule() -> CharaListViewController {
+        let storyboard = UIStoryboard(name: "CharaList", bundle: nil)
+        let viewController = storyboard.instantiateViewController(withIdentifier: "list") as! CharaListViewController
+        let interactor = CharaListInteractor(firebaseRepository: FirebaseRepository())
+        let router = CharaListRouter(viewController: viewController)
+        
+        let presenter = CharaListPresenter(
+            view: viewController,
+            interactor: interactor,
+            router: router
+        )
+        
+        viewController.presenter = presenter
+        return viewController
     }
 }
 
