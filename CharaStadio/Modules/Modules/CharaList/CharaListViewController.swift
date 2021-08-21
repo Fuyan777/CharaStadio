@@ -15,6 +15,7 @@ protocol CharaListViewInterface: AnyObject {
 }
 
 final class CharaListViewController: UIViewController {
+    
     @IBOutlet weak var charaCollectionView: UICollectionView! {
         didSet {
             charaCollectionView.dataSource = self
@@ -51,20 +52,24 @@ final class CharaListViewController: UIViewController {
         super.viewWillAppear(animated)
         self.charaCollectionView.reloadData()
     }
+    
 }
 
 // MARK: - private method
 
 private extension CharaListViewController {
+    
     @objc
     private func movePost() {
         presenter.didTapCharaPost()
     }
+    
 }
 
 // MARK: - Interface
 
 extension CharaListViewController: CharaListViewInterface {
+    
     func displayCharaList(_ chara: [CharaEntity]) {
         self.chara = chara
         self.searchResultChara = chara
@@ -84,11 +89,13 @@ extension CharaListViewController: CharaListViewInterface {
     func alertListError(error: Error) {
         self.alertError(error: error)
     }
+    
 }
 
 // MARK: - UICollection Delegate
 
 extension CharaListViewController: UICollectionViewDataSource {
+    
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.searchResultChara.count
     }
@@ -99,23 +106,29 @@ extension CharaListViewController: UICollectionViewDataSource {
         cell.setupCell(component: component)
         return cell
     }
+    
 }
 
 extension CharaListViewController: UICollectionViewDelegate {
+    
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         self.presenter.didSelectChara(selectedChara: self.searchResultChara[indexPath.row])
     }
+    
 }
 
 extension CharaListViewController: UICollectionViewDelegateFlowLayout {
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         return CGSize(width: self.charaCollectionView.frame.width - 8.0 * 2, height: 116.0)
     }
+    
 }
 
 // MARK: - UISearchBar Delegate
 
 extension CharaListViewController: UISearchBarDelegate {
+    
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
     }
@@ -139,12 +152,15 @@ extension CharaListViewController: UISearchBarDelegate {
         searchResultChara = self.chara
         charaCollectionView.reloadData()
     }
+    
 }
 
 // MARK: - CharaReload Delegate
 
 extension CharaListViewController: CharaReloadDelegate {
+    
     func reloadData() {
         charaCollectionView.reloadData()
     }
+
 }
