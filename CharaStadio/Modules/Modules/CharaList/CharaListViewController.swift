@@ -41,7 +41,6 @@ final class CharaListViewController: UIViewController {
     var presenter: CharaListPresenterInterface!
     private var chara: [CharaEntity] = []
     private var searchResultChara: [CharaEntity] = []
-    private var model: CharaListModelProtocol = CharaListModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
