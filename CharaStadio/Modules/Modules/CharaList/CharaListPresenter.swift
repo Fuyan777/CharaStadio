@@ -9,7 +9,7 @@ import Foundation
 
 protocol CharaListPresenterInterface: AnyObject {
     func viewDidLoad()
-    func didSelectChara(chara: CharaEntity)
+    func didSelectChara(selectedChara: CharaEntity)
     func didTapCharaPost()
 }
 
@@ -45,8 +45,10 @@ extension CharaListPresenter: CharaListPresenterInterface {
         }
     }
     
-    func didSelectChara(chara: CharaEntity) {
-        router.pushCharaDetail(chara: chara)
+    func didSelectChara(selectedChara: CharaEntity) {
+        interactor.saveSpotlightChara(selectedChara: selectedChara)
+        interactor.saveUserDefaultsChara(selectedChara: selectedChara)
+        router.pushCharaDetail(chara: selectedChara)
     }
     
     func didTapCharaPost() {

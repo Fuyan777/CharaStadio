@@ -39,9 +39,9 @@ final class CharaListViewController: UIViewController {
     }
     
     var presenter: CharaListPresenterInterface!
+    private var chara: [CharaEntity] = []
     
     private var model: CharaListModelProtocol = CharaListModel()
-    private let spotlight: SpotlightRepositoryProtocol = SpotlightRepository()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -60,7 +60,10 @@ final class CharaListViewController: UIViewController {
 
 extension CharaListViewController: CharaListViewInterface {
     func displayCharaList(_ chara: [CharaEntity]) {
-        // TODO: presenter実装後
+        self.chara = chara
+        DispatchQueue.main.async {
+            self.charaCollectionView.reloadData()
+        }
     }
     
     func displayLodingAlert() {
@@ -78,12 +81,12 @@ extension CharaListViewController: CharaListViewInterface {
 
 extension CharaListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return model.searchResult.count
+        return chara.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as CharaCollectionViewCell
-        let component = CharaCollectionViewCell.Component(charaInfo: model.searchResult[indexPath.row])
+        let component = CharaCollectionViewCell.Component(charaInfo: self.chara[indexPath.row])
         cell.setupCell(component: component)
         return cell
     }
@@ -91,20 +94,7 @@ extension CharaListViewController: UICollectionViewDataSource {
 
 extension CharaListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        spotlight.saveChara(charaInfo: model.entity[indexPath.row])
-        UserDefaultsClient().saveChara(
-            model.entity[indexPath.row],
-            forkey: "chara://detail?id=\(model.entity[indexPath.row].id)"
-        )
-        
-        let storyboard: UIStoryboard = UIStoryboard(name: "CharaDetail", bundle: nil)
-        let nextView = storyboard.instantiateViewController(withIdentifier: "detail") as! CharaDetailViewController
-        
-        nextView.charaDetail = model.entity[indexPath.row]
-        if let tmp = UserDefaultsClient().loadChara(key: "favo=\(model.entity[indexPath.row].id)") {
-            nextView.charaDetail.isFavorite = tmp.isFavorite
-        }
-        self.navigationController?.pushViewController(nextView, animated: true)
+        self.presenter.didSelectChara(selectedChara: self.chara[indexPath.row])
     }
 }
 
@@ -121,7 +111,7 @@ extension CharaListViewController: UISearchBarDelegate {
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         model.removeAll()
-
+        
         if searchText.isEmpty {
             clearSearch()
         } else {

@@ -22,7 +22,7 @@ final class CharaListRouter {
     static func assembleModule() -> CharaListViewController {
         let storyboard = UIStoryboard(name: "CharaList", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "list") as! CharaListViewController
-        let interactor = CharaListInteractor(firebaseRepository: FirebaseRepository())
+        let interactor = CharaListInteractor(firebaseRepository: FirebaseRepository(), spotlight: SpotlightRepository())
         let router = CharaListRouter(viewController: viewController)
         
         let presenter = CharaListPresenter(
