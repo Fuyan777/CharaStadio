@@ -40,6 +40,7 @@ final class CharaListViewController: UIViewController {
     
     var presenter: CharaListPresenterInterface!
     private var chara: [CharaEntity] = []
+    private var searchResultChara: [CharaEntity] = []
     private var model: CharaListModelProtocol = CharaListModel()
     
     override func viewDidLoad() {
@@ -67,6 +68,7 @@ private extension CharaListViewController {
 extension CharaListViewController: CharaListViewInterface {
     func displayCharaList(_ chara: [CharaEntity]) {
         self.chara = chara
+        self.searchResultChara = chara
         DispatchQueue.main.async {
             self.charaCollectionView.reloadData()
         }
@@ -89,12 +91,12 @@ extension CharaListViewController: CharaListViewInterface {
 
 extension CharaListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return chara.count
+        return self.searchResultChara.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(for: indexPath) as CharaCollectionViewCell
-        let component = CharaCollectionViewCell.Component(charaInfo: self.chara[indexPath.row])
+        let component = CharaCollectionViewCell.Component(charaInfo: self.searchResultChara[indexPath.row])
         cell.setupCell(component: component)
         return cell
     }
@@ -102,7 +104,7 @@ extension CharaListViewController: UICollectionViewDataSource {
 
 extension CharaListViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        self.presenter.didSelectChara(selectedChara: self.chara[indexPath.row])
+        self.presenter.didSelectChara(selectedChara: self.searchResultChara[indexPath.row])
     }
 }
 
@@ -120,15 +122,13 @@ extension CharaListViewController: UISearchBarDelegate {
     }
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        model.removeAll()
+        searchResultChara.removeAll()
         
         if searchText.isEmpty {
             clearSearch()
         } else {
             self.chara.forEach {
-                if $0.name.contains(searchText) {
-                    model.searchResult.append($0)
-                }
+                if $0.name.contains(searchText) { searchResultChara.append($0) }
             }
         }
         
@@ -136,8 +136,8 @@ extension CharaListViewController: UISearchBarDelegate {
     }
     
     private func clearSearch() {
-        model.removeAll()
-        model.searchResult = self.chara
+        searchResultChara.removeAll()
+        searchResultChara = self.chara
         charaCollectionView.reloadData()
     }
 }
