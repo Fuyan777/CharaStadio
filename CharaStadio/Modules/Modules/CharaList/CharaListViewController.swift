@@ -40,7 +40,6 @@ final class CharaListViewController: UIViewController {
     
     var presenter: CharaListPresenterInterface!
     private var chara: [CharaEntity] = []
-    
     private var model: CharaListModelProtocol = CharaListModel()
     
     override func viewDidLoad() {
@@ -52,11 +51,18 @@ final class CharaListViewController: UIViewController {
         super.viewWillAppear(animated)
         self.charaCollectionView.reloadData()
     }
-    
-    @objc private func movePost() {
+}
+
+// MARK: - private method
+
+private extension CharaListViewController {
+    @objc
+    private func movePost() {
         presenter.didTapCharaPost()
     }
 }
+
+// MARK: - Interface
 
 extension CharaListViewController: CharaListViewInterface {
     func displayCharaList(_ chara: [CharaEntity]) {
@@ -75,9 +81,11 @@ extension CharaListViewController: CharaListViewInterface {
     }
     
     func alertListError(error: Error) {
-        alertError(error: error)
+        self.alertError(error: error)
     }
 }
+
+// MARK: - UICollection Delegate
 
 extension CharaListViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -104,6 +112,8 @@ extension CharaListViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: - UISearchBar Delegate
+
 extension CharaListViewController: UISearchBarDelegate {
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         view.endEditing(true)
@@ -115,7 +125,7 @@ extension CharaListViewController: UISearchBarDelegate {
         if searchText.isEmpty {
             clearSearch()
         } else {
-            model.entity.forEach {
+            self.chara.forEach {
                 if $0.name.contains(searchText) {
                     model.searchResult.append($0)
                 }
@@ -127,10 +137,12 @@ extension CharaListViewController: UISearchBarDelegate {
     
     private func clearSearch() {
         model.removeAll()
-        model.searchResult = model.entity
+        model.searchResult = self.chara
         charaCollectionView.reloadData()
     }
 }
+
+// MARK: - CharaReload Delegate
 
 extension CharaListViewController: CharaReloadDelegate {
     func reloadData() {
