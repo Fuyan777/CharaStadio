@@ -19,7 +19,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         appDelegate.window = self.window
-        guard let _ = (scene as? UIWindowScene) else { return }
+        guard let windowScene = (scene as? UIWindowScene) else { return }
+        
+        // TODO: TabBarに戻す
+        let rootViewController = CharaListRouter.assembleModule()
+        self.window = UIWindow(windowScene: windowScene)
+        self.window?.makeKeyAndVisible()
+        self.window?.rootViewController = UINavigationController(rootViewController: rootViewController)
         
         if let userActivity = connectionOptions.userActivities.first {
             executeUserActivity(userActivity)
